@@ -56,8 +56,24 @@ In this lab assignment, I built a responsive e-commerce web application (StrideH
 ---
 
 ## Workflow Process
-1. Created the file structure `index.html` and `style.css`, linked fonts and the viewport meta tag.
-2. Wrote styles with media queries for text and blocks (Tasks 0 and 1).
-3. Coded grid blocks for categories and products (Task 2).
-4. Added the interactive hamburger navbar (Task 3).
-5. Assembled the final store section and checked layout scaling via browser developer tools.
+
+- Step 1. Project Initialization & Setup
+- First, I created the project folder and the core files: `index.html` and `style.css`.
+- Linked Google Fonts for typography and added the viewport meta tag so everything scales properly on phones.
+
+- Step 2. Styling Typography & Fluid Layouts (Tasks 0 & 1)
+- Wrote media queries so that headings and text smoothly change their size on different screens.
+- Created flexible blocks using Flexbox — on a computer they stand in a row, and on a phone they stack vertically under each other.
+
+- Step 3. Implementing the Grid System (Task 2)
+- Built my own 12-column grid (`col-*`) for category cards and product listings.
+- Set up breakpoints: desktop shows 3 columns (`col-lg-4`), tablet shows two blocks on top and one below, and mobile puts everything into a single column (`col-12`).
+
+- Step 4. Building the Interactive Navbar (Task 3)
+- Made the website header with the logo on the left and menu links on the right.
+- Implemented a mobile hamburger menu without any JS — purely using CSS via the checkbox hack so it opens on click.
+
+- Step 5. Assembling the Combined Store Section & Testing
+- Put everything together on the main page: the header, product grid, sidebar with filters, and footer.
+- Tested it through the browser inspector (F12), checked responsiveness, and fixed minor padding or overlap issues.
+- Finished up the README and pushed the ready code to the GitHub repository.
