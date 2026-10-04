@@ -18,17 +18,14 @@ h1, h2, h3 {
   background-color: #f6f4ee;
 }
 
-/* Задание 0: адаптивная типографика, размер шрифта меняется по media queries */
-
 .hero h1 {
-  font-size: 26px;   /* мобильный размер по умолчанию */
+  font-size: 26px;
 }
 
 .hero p {
-  font-size: 14px;   /* мобильный размер по умолчанию */
+  font-size: 14px;
 }
 
-/* планшет: экран от 768px */
 @media (min-width: 768px) {
   .hero h1 {
     font-size: 36px;
@@ -38,7 +35,6 @@ h1, h2, h3 {
   }
 }
 
-/* десктоп: экран от 992px */
 @media (min-width: 992px) {
   .hero h1 {
     font-size: 48px;
@@ -89,23 +85,20 @@ h1, h2, h3 {
   color: #3d6b5c;
 }
 
-/* Задание 3: навбар сворачивается в гамбургер на маленьких экранах (чекбокс, без JS) */
-
 .nav-toggle {
-  display: none;   /* сам чекбокс всегда спрятан */
+  display: none;
 }
 
 .nav-toggle-label {
-  display: none;    /* иконка-гамбургер по умолчанию скрыта (видна только на мобильных/планшетах) */
+  display: none;
   font-size: 26px;
   cursor: pointer;
 }
 
-/* до 768px (мобильные и часть планшетов) включаем гамбургер */
 @media (max-width: 768px) {
 
   .navbar {
-    flex-wrap: wrap;   /* чтобы меню могло перенестись на новую строку */
+    flex-wrap: wrap;
   }
 
   .navbar .nav-toggle-label {
@@ -113,8 +106,8 @@ h1, h2, h3 {
   }
 
   .navbar .nav-links {
-    display: none;            /* меню спрятано, пока чекбокс не отмечен */
-    flex-direction: column;   /* ссылки друг под другом */
+    display: none;
+    flex-direction: column;
     align-items: flex-start;
     width: 100%;
     margin-top: 15px;
@@ -125,18 +118,14 @@ h1, h2, h3 {
     margin-bottom: 10px;
   }
 
-  /* когда чекбокс отмечен (label нажали) — показываем меню */
   .navbar .nav-toggle:checked ~ .nav-links {
     display: flex;
   }
-
 }
-
-/* Задание 1: три блока в ряд, только CSS + media queries, без Bootstrap */
 
 .feature-row {
   display: flex;
-  flex-direction: column;  /* мобильные: друг под другом */
+  flex-direction: column;  
   gap: 20px;
 }
 
@@ -145,54 +134,54 @@ h1, h2, h3 {
   border-radius: 6px;
   padding: 20px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .feature-box h3 {
   margin-bottom: 8px;
 }
 
-/* планшет: два блока в ряд */
-@media (min-width: 600px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .feature-row {
     flex-direction: row;
     flex-wrap: wrap;
   }
   .feature-box {
-    flex: 1 1 calc(50% - 10px); /* по 2 блока в ряд, третий переносится ниже */
+    flex: 0 0 calc(50% - 10px);
+  }
+  .feature-box:nth-child(3) {
+    flex: 0 0 100% !important;
   }
 }
 
-/* десктоп: все три блока в один ряд */
 @media (min-width: 992px) {
   .feature-row {
     flex-direction: row;
+    flex-wrap: nowrap;
   }
   .feature-box {
-    flex: 1;  /* три равные колонки */
+    flex: 1;
+  }
+  .feature-box:nth-child(3) {
+    flex: 1;
   }
 }
-
-
-/* Задание 2: своя 12-колоночная сетка (аналог Bootstrap grid), без CDN */
 
 .row {
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12-колоночная сетка */
+  grid-template-columns: repeat(12, 1fr);
   gap: 20px;
 }
 
-/* мобильные (по умолчанию): любой col-* занимает всю ширину */
 [class*="col-"] {
   grid-column: span 12;
 }
 
-/* планшет: от 768px */
 @media (min-width: 768px) {
   .col-md-6  { grid-column: span 6; }
   .col-md-12 { grid-column: span 12; }
 }
 
-/* десктоп: от 992px */
 @media (min-width: 992px) {
   .col-lg-4 { grid-column: span 4; }
   .col-lg-8 { grid-column: span 8; }
@@ -207,7 +196,6 @@ h1, h2, h3 {
   font-size: 18px;
   font-weight: bold;
 }
-
 
 .card-row {
   display: flex;
@@ -227,7 +215,6 @@ h1, h2, h3 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* на узких экранах фиксированная ширина карточки вылезает за край — убираем её */
 @media (max-width: 600px) {
   .card {
     width: 100%;
@@ -270,63 +257,78 @@ h1, h2, h3 {
 }
 
 .shop-layout {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 60px auto 60px;
-  grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
-  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 .shop-header {
-  grid-area: header;
   background-color: #3d6b5c;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
+  padding: 15px 20px;
   font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.shop-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .shop-content-wrapper {
+    flex-direction: row;
+  }
 }
 
 .shop-sidebar {
-  grid-area: sidebar;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   border: 1px solid #dddddd;
   padding: 15px;
+  border-radius: 6px;
+  flex: 0 0 220px;
 }
 
 .shop-main {
-  grid-area: main;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   border: 1px solid #dddddd;
-  padding: 15px;
+  padding: 20px;
+  border-radius: 6px;
+  flex: 1;
+  text-align: center;
 }
 
 .shop-main img {
   width: 100%;
-  max-width: 300px;
-  background-color: #eeeeee;
-  margin-bottom: 10px;
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+  border-radius: 4px;
 }
 
 .shop-main button {
   background-color: #3d6b5c;
   color: #ffffff;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .shop-footer {
-  grid-area: footer;
   background-color: #3d6b5c;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
 .filter-list {
@@ -405,7 +407,6 @@ h1, h2, h3 {
   border-radius: 6px;
 }
 
-/* Задание 4: New Arrivals использует ту же сетку (Задание 2) + свои media queries */
 
 .row.arrivals-main {
   align-items: start;
@@ -473,7 +474,6 @@ h1, h2, h3 {
 
 }
 
-/* мобильные: меньше отступы, прячем описание в сайдбаре */
 @media (max-width: 767px) {
   .new-arrivals {
     padding: 25px 15px;
@@ -486,7 +486,6 @@ h1, h2, h3 {
   }
 }
 
-/* планшет: средние отступы и шрифт заголовков карточек */
 @media (min-width: 768px) and (max-width: 991px) {
   .new-arrivals {
     padding: 35px 20px;
@@ -496,7 +495,6 @@ h1, h2, h3 {
   }
 }
 
-/* десктоп: полные отступы, крупнее заголовки карточек */
 @media (min-width: 992px) {
   .new-arrivals {
     padding: 40px 20px;
